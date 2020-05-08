@@ -7,7 +7,7 @@ import MyPic from '../MyPicture/Mypicture';
 const home = () => (
     <div className={classes.Home}>
         <MyPic height='300px' />
-        <h1>Hello everyone and, wellcome to my official website</h1>
+        <h1>Wellcome to my official website</h1>
         <h3>My name is <strong>Aram Alhaddad</strong> and, I am a web Devoloper and, a musician</h3>
         <Button>Learn More</Button>
     </div>
