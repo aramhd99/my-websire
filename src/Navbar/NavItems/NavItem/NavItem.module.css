@@ -1,6 +1,7 @@
 .NavItem {
-    display: inline-block;
-    margin: auto 20px;
+    list-style: none;
+    padding: 20px 10px;
+    display: block;
 }
 .NavItem:Hover {
     color:green;

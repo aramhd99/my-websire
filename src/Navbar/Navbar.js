@@ -1,13 +1,25 @@
-import React from 'react';
+import React, { Component } from 'react';
 
-import NavItems from './NavItems/NavItems';
 import classes from './Navbar.module.css';
+import NavItems from './NavItems/NavItems';
+import SideDrawerToggle from './SideDrawer/SideDrawerToggle/SideDrawerToggle';
 
-const navbar = () => (
-    <nav className={classes.Navbar}>
-        <h1 style={{padding:'0 20px'}}>Aram Alhaddad</h1>
-        <NavItems />
-    </nav>
-)
+class Navbar extends Component{
+    state ={
+        toggleClicked: true,
+    }
 
-export default navbar;
+    render () {
+        return (
+            <nav className={classes.Navbar}>
+                <h1 style={{padding:'0 20px'}}>Aram Alhaddad</h1>
+                <div className={classes.DesktopOnly}>
+                    <NavItems />
+                </div>
+                <SideDrawerToggle />
+            </nav>
+        )
+    }
+}
+
+export default Navbar;

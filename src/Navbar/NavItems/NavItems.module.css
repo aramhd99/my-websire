@@ -1,9 +1,12 @@
 .NavItems {
-    list-style: none;
+    color: rgb(0, 0, 0);
+    font-size: 17px;
     display: block;
-}
-@media (max-width: 499px) {
+  }
+
+@media (min-width: 500px) {
     .NavItems {
-        display: none;
+        flex-flow: row;
+        display: flex;
     }
 }
