@@ -1,0 +1,8 @@
+.NavItem {
+    display: inline-block;
+    margin: 0 20px;
+}
+.NavItem:Hover {
+    color:green;
+    cursor: pointer;
+}

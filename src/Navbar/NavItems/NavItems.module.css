@@ -1,0 +1,9 @@
+.NavItems {
+    list-style: none;
+    display: block;
+}
+@media (max-width: 499px) {
+    .NavItems {
+        display: none;
+    }
+}
