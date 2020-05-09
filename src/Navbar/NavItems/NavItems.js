@@ -5,9 +5,9 @@ import NavItem from './NavItem/NavItem';
 
 const navItems = () => (
     <ul className={classes.NavItems}>
-        <NavItem>Home</NavItem>
-        <NavItem>About</NavItem>
-        <NavItem>Contact Me</NavItem>
+        <NavItem exact to='/'>Home</NavItem>
+        <NavItem to='/about'>About</NavItem>
+        <NavItem to='/contact'>Contact Me</NavItem>
     </ul>
 )
 

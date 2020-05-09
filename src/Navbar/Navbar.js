@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 
 import classes from './Navbar.module.css';
 import NavItems from './NavItems/NavItems';
@@ -9,15 +10,26 @@ class Navbar extends Component{
         toggleClicked: true,
     }
 
+
     render () {
         return (
             <nav className={classes.Navbar}>
-                <h1 style={{padding:'0 20px'}}>Aram Alhaddad</h1>
+                <Link 
+                to='/'
+                style={{
+                    color:'black',
+                    textDecoration:'none',
+                    fontSize:'32px',
+                    fontWeight:'bold',
+                    padding:'0 20px',
+                    cursor:'pointer',
+                    }}>
+                    Aram Alhaddad</Link>
                 <div className={classes.DesktopOnly}>
                     <NavItems />
                 </div>
-                <SideDrawerToggle />
-            </nav>
+                <SideDrawerToggle clicked={this.props.clicked} />
+            </nav>      
         )
     }
 }

@@ -1,9 +1,14 @@
 .NavItem {
-    list-style: none;
+    text-decoration: none;
     padding: 20px 10px;
     display: block;
-}
-.NavItem:Hover {
-    color:green;
     cursor: pointer;
+    color: black;
+}
+
+.NavItem:Hover,
+.NavItem:active,
+.NavItem.active {
+    background-color: rgb(113, 230, 113);
+    border-bottom: 5px solid rgb(99, 168, 99);
 }

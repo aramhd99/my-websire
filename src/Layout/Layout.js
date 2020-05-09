@@ -5,11 +5,22 @@ import SideDrawer from '../Navbar/SideDrawer/SideDrawer';
 import classes from './Layout.module.css';
 
 class Layout extends Component {
+    state = {
+        ToggleBar : false,
+    }
+
+    SideDrawerToggleHandler = () => {
+        this.setState(preState => {
+            return {ToggleBar: !preState.ToggleBar}
+        })
+    }
+
+
     render () {
         return (
             <div>
-                <Navbar/>
-                <SideDrawer />
+                <Navbar clicked={this.SideDrawerToggleHandler}/>
+                <SideDrawer Toggle={this.state.ToggleBar}  />
                 <main className={classes.Content}>
                     {this.props.children}
                 </main>
