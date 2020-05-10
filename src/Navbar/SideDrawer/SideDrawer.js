@@ -11,8 +11,10 @@ const sideDrawer = (props) => {
             ToggleClass = [classes.SideDrawer, classes.Close]
         }
         return (
-            <div className={ToggleClass.join(' ')}>
+            <div className={ToggleClass.join(' ')} onClick={props.clicked}>
+                <nav>
                 <NavItems />
+                </nav>
             </div>
     )
 } 

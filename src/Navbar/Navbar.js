@@ -23,6 +23,7 @@ class Navbar extends Component{
                     fontWeight:'bold',
                     padding:'0 20px',
                     cursor:'pointer',
+                    display:'block'
                     }}>
                     Aram Alhaddad</Link>
                 <div className={classes.DesktopOnly}>

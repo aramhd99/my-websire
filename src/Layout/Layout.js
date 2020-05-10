@@ -20,11 +20,15 @@ class Layout extends Component {
         return (
             <div>
                 <Navbar clicked={this.SideDrawerToggleHandler}/>
-                <SideDrawer Toggle={this.state.ToggleBar}  />
+                <SideDrawer Toggle={this.state.ToggleBar} 
+                        clicked={this.SideDrawerToggleHandler} />
                 <main className={classes.Content}>
                     {this.props.children}
                 </main>
-                <footer>Created by Aram Alhaddad All right Recived </footer>
+                <footer style={{
+                    textAlign:'center',
+                    bottom:'0'
+                        }}>&copy; Created by Aram Alhaddad All right Recived </footer>
             </div>
         )
     }

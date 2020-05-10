@@ -1,6 +1,9 @@
 .About {
-    align-items: center;
-    margin: 20px;
+    margin: 50px;
     font-size: 20px;
     font-weight: bold;
+}
+
+.About h1 {
+    text-align: center;
 }
