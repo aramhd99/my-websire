@@ -13,25 +13,53 @@ class Contact extends Component {
                 Inputtype:'input',
                 InputConfig: {
                     type: 'text',
-                    placeholder: 'Your Name'
+                    placeholder: 'Your Name*'
                 },
                 value: '',
+                validation: {
+                    reqired: true
+                },
+                valid: false,
+                touched: false,
             },
             Email: {
                 Inputtype:'input',
                 InputConfig: {
                     type: 'email',
-                    placeholder: 'Your E-mail',
+                    placeholder: 'Your Email*',
                 },
-                value: ''
+                value: '',
+                validation: {
+                    reqired: true
+                },
+                valid: false,
+                touched: false,
             },
             Phonenumber: {
                 Inputtype:'input',
                 InputConfig: {
                     type: 'number',
-                    placeholder: 'Your PhoneNumber'
+                    placeholder: 'Your PhoneNumber*'
                 },
-                value: ''
+                value: '',
+                validation: {
+                    reqired: true
+                },
+                valid: false,
+                touched: false,
+            },
+            Subject: {
+                Inputtype:'input',
+                InputConfig: {
+                    type: 'text',
+                    placeholder: 'Subject*'
+                },
+                value: '',
+                validation: {
+                    reqired: true
+                },
+                valid: false,
+                touched: false,
             },
             Message: {
                 Inputtype:'textarea',
@@ -39,10 +67,23 @@ class Contact extends Component {
                     rows: '10',
                     placeholder: 'Your Message'
                 },
-                value: ''
+                value: '',
+                valid: true,
             }
         },
         Loading: false,
+        formIsValid: false,
+    }
+
+    checkValidityHandler(value, rules) {
+        let isValid = false;
+        if (!rules) {
+            return true
+        }
+        if (rules.reqired) {
+            isValid = value.trim() !== '' 
+        }
+        return isValid
     }
 
     InputChangedHanler = (event, inputIdentifier) => {
@@ -51,23 +92,27 @@ class Contact extends Component {
             }
             const updatedFormElement = {...updatedForm[inputIdentifier]}
             updatedFormElement.value = event.target.value;
+            updatedFormElement.touched = true;
+            updatedFormElement.valid = this.checkValidityHandler(updatedFormElement.value, updatedFormElement.validation)
             updatedForm[inputIdentifier] = updatedFormElement
-            this.setState({contactData: updatedForm})
+            let formValidation = true 
+            for (let inputId in updatedForm) {
+                formValidation = updatedForm[inputId].valid && formValidation
+            }
+            this.setState({contactData: updatedForm, formIsValid:formValidation})
         }
 
     MessageSendHandler = (event) => {
         event.preventDefault();
         this.setState({Loading:true})
-        let FormData=[];
+        let FormData={};
         for (let formElementId in this.state.contactData) {
             FormData[formElementId] = this.state.contactData[formElementId].value
         } 
         axios.post('https://my-app-6a24c.firebaseio.com/messages.json', FormData)
         .then(response => {
-            console.log(response)
             this.setState({Loading:false});
             this.props.history.push('/thankyou')
-            console.log(FormData)
             })
         .catch(error =>{
             this.setState({Loading:false});
@@ -88,12 +133,15 @@ class Contact extends Component {
                 {formElementArr
                 .map(formElement => (
                     <Input key={formElement.id}
+                        label={formElement.id}
                         ElementType={formElement.config.Inputtype}
                         InputConfig={formElement.config.InputConfig} 
                         value={formElement.config.value}
+                        invalid={!formElement.config.valid}
+                        touched={formElement.config.touched}
                         changed={(event) => this.InputChangedHanler(event, formElement.id)}/>
                 ))}
-                <Button>Send</Button>
+                <Button disabled={!this.state.formIsValid}>Send</Button>
             </form>
         )
         if (this.state.Loading) {

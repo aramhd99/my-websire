@@ -7,8 +7,10 @@ const button = (props) => {
     if (props.error) {
         css = classes.Red
     }
+
     return (
         <button className={css}
+            disabled={props.disabled}
             onClick={props.clicked}>
                 {props.children}</button>
     )

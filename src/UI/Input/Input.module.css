@@ -10,21 +10,28 @@
     width: 60%;
     background-color: #eee;
     border-radius: 5px;
-    padding: 2px;
+    padding: 5px;
 }
 
 .Label {
     font-weight: bold;
     margin-bottom: 8px;
     display: block;
+    padding: 2px;
 }
 
 .InputElement:focus {
     outline: none;
     background-color: white;
+    border: 2px solid green;
 }
 
 .InputErr {
-    background-color: salmon;
+    background-color: rgb(245, 149, 149);
     border: 2px solid red;
+}
+.errMsg {
+    color: red;
+    font-size: 15px;
+    font-weight: bold;
 }

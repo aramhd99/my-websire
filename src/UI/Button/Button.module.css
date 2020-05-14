@@ -19,6 +19,13 @@
   border: 2px solid #4CAF50;
 }
 
+.Button:disabled {
+  background-color: #eee;
+  cursor: not-allowed;
+  border: 0;
+  color: #aaa
+}
+
 .Red {
   background-color: Red;
   border: none;
