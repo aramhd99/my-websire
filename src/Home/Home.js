@@ -14,7 +14,7 @@ class Home extends Component {
         return (
             <div className={classes.Home}>
                 <MyPic height='200px' />
-                <h1>Wellcome to my official website</h1>
+                <h1>Welcome to my official website</h1>
                 <h3>My name is <strong>Aram Alhaddad</strong> and, I am a web Devoloper and, a musician</h3>
                 <Button clicked={this.ButtonClickedHandler}>Learn More</Button>
             </div>
