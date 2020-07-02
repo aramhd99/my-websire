@@ -1,17 +1,12 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { Link } from 'react-router-dom';
 
 import classes from './Navbar.module.css';
 import NavItems from './NavItems/NavItems';
 import SideDrawerToggle from './SideDrawer/SideDrawerToggle/SideDrawerToggle';
 
-class Navbar extends Component{
-    state ={
-        toggleClicked: true,
-    }
+ const navbar = props => {
 
-
-    render () {
         return (
             <nav className={classes.Navbar}>
                 <Link 
@@ -29,10 +24,9 @@ class Navbar extends Component{
                 <div className={classes.DesktopOnly}>
                     <NavItems />
                 </div>
-                <SideDrawerToggle clicked={this.props.clicked} />
+                <SideDrawerToggle clicked={props.clicked} />
             </nav>      
         )
-    }
 }
 
-export default Navbar;
+export default navbar;

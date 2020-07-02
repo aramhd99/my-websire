@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { useState } from 'react';
 import axios from 'axios';
 
 import Input from '../UI/Input/Input';
@@ -6,11 +6,10 @@ import Button from '../UI/Button/Button';
 import classes from './Contact.module.css';
 import Spinner from '../UI/Spinner/Spinner';
 
-class Contact extends Component {
-    state = {
-        contactData: {
+const Contact = props => {
+    const [form, setForm] = useState({
             Name: {
-                Inputtype:'input',
+                Inputtype: 'input',
                 InputConfig: {
                     type: 'text',
                     placeholder: 'Your Name*'
@@ -23,7 +22,7 @@ class Contact extends Component {
                 touched: false,
             },
             Email: {
-                Inputtype:'input',
+                Inputtype: 'input',
                 InputConfig: {
                     type: 'email',
                     placeholder: 'Your Email*',
@@ -36,7 +35,7 @@ class Contact extends Component {
                 touched: false,
             },
             Phonenumber: {
-                Inputtype:'input',
+                Inputtype: 'input',
                 InputConfig: {
                     type: 'number',
                     placeholder: 'Your PhoneNumber*'
@@ -49,7 +48,7 @@ class Contact extends Component {
                 touched: false,
             },
             Subject: {
-                Inputtype:'input',
+                Inputtype: 'input',
                 InputConfig: {
                     type: 'text',
                     placeholder: 'Subject*'
@@ -62,20 +61,20 @@ class Contact extends Component {
                 touched: false,
             },
             Message: {
-                Inputtype:'textarea',
+                Inputtype: 'textarea',
                 InputConfig: {
                     rows: '10',
                     placeholder: 'Your Message'
                 },
                 value: '',
                 valid: true,
-            }
-        },
-        Loading: false,
-        formIsValid: false,
-    }
+                }
+        })
+        const [loading, setLoading] = useState(false)
+        const [formIsValid, setFormIsValid] = useState(false)
 
-    checkValidityHandler(value, rules) {
+
+    const checkValidityHandler = (value, rules) => {
         let isValid = false;
         if (!rules) {
             return true
@@ -86,50 +85,48 @@ class Contact extends Component {
         return isValid
     }
 
-    InputChangedHanler = (event, inputIdentifier) => {
-            const updatedForm = {
-                ...this.state.contactData
-            }
+    const InputChangedHanler = (event, inputIdentifier) => {
+            const updatedForm = {...form}
             const updatedFormElement = {...updatedForm[inputIdentifier]}
             updatedFormElement.value = event.target.value;
             updatedFormElement.touched = true;
-            updatedFormElement.valid = this.checkValidityHandler(updatedFormElement.value, updatedFormElement.validation)
+            updatedFormElement.valid = checkValidityHandler(updatedFormElement.value, updatedFormElement.validation)
             updatedForm[inputIdentifier] = updatedFormElement
             let formValidation = true 
             for (let inputId in updatedForm) {
                 formValidation = updatedForm[inputId].valid && formValidation
             }
-            this.setState({contactData: updatedForm, formIsValid:formValidation})
+            setForm(updatedForm);
+            setFormIsValid(formValidation)
         }
 
-    MessageSendHandler = (event) => {
+    const MessageSendHandler = (event) => {
         event.preventDefault();
-        this.setState({Loading:true})
+        setLoading(true)
         let FormData={};
-        for (let formElementId in this.state.contactData) {
-            FormData[formElementId] = this.state.contactData[formElementId].value
+        for (let formElementId in form) {
+            FormData[formElementId] = form[formElementId].value
         } 
         axios.post('https://my-app-6a24c.firebaseio.com/messages.json', FormData)
         .then(response => {
-            this.setState({Loading:false});
-            this.props.history.push('/thankyou')
+            setLoading(true)
+            props.history.push('/thankyou')
             })
         .catch(error =>{
-            this.setState({Loading:false});
-            this.props.history.push('/error')
+            setLoading(false)
+            props.history.push('/error')
         })
     }
 
-    render () {
         const formElementArr = [];
-        for (let key in this.state.contactData) {
+        for (let key in form) {
             formElementArr.push({
                 id: key,
-                config: this.state.contactData[key]
+                config: form[key]
             })
         }
-        let form = (
-            <form onSubmit={this.MessageSendHandler}>
+        let formContent = (
+            <form onSubmit={MessageSendHandler}>
                 {formElementArr
                 .map(formElement => (
                     <Input key={formElement.id}
@@ -139,21 +136,20 @@ class Contact extends Component {
                         value={formElement.config.value}
                         invalid={!formElement.config.valid}
                         touched={formElement.config.touched}
-                        changed={(event) => this.InputChangedHanler(event, formElement.id)}/>
+                        changed={(event) => InputChangedHanler(event, formElement.id)} />
                 ))}
-                <Button disabled={!this.state.formIsValid}>Send</Button>
+                <Button disabled={!formIsValid}>Send</Button>
             </form>
         )
-        if (this.state.Loading) {
-            form = <Spinner />
+        if (loading) {
+            formContent = <Spinner />
         }
         return (
             <div className={classes.ContactForm}>
                 <h1>Contact Me</h1>
-                {form}
+                {formContent}
             </div>
         )
-    }
 }
 
 export default Contact;
