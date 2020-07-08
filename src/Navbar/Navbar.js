@@ -9,6 +9,7 @@ import SideDrawerToggle from './SideDrawer/SideDrawerToggle/SideDrawerToggle';
 
         return (
             <nav className={classes.Navbar}>
+                <SideDrawerToggle clicked={props.clicked} />
                 <Link 
                 to='/'
                 style={{
@@ -24,8 +25,7 @@ import SideDrawerToggle from './SideDrawer/SideDrawerToggle/SideDrawerToggle';
                 <div className={classes.DesktopOnly}>
                     <NavItems />
                 </div>
-                <SideDrawerToggle clicked={props.clicked} />
-            </nav>      
+            </nav>
         )
 }
 

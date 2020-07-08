@@ -85,7 +85,7 @@ const Contact = props => {
         return isValid
     }
 
-    const InputChangedHanler = (event, inputIdentifier) => {
+    const InputChangedHandler = (event, inputIdentifier) => {
             const updatedForm = {...form}
             const updatedFormElement = {...updatedForm[inputIdentifier]}
             updatedFormElement.value = event.target.value;
@@ -136,7 +136,7 @@ const Contact = props => {
                         value={formElement.config.value}
                         invalid={!formElement.config.valid}
                         touched={formElement.config.touched}
-                        changed={(event) => InputChangedHanler(event, formElement.id)} />
+                        changed={(event) => InputChangedHandler(event, formElement.id)} />
                 ))}
                 <Button disabled={!formIsValid}>Send</Button>
             </form>
