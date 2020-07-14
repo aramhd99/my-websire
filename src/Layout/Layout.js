@@ -21,7 +21,7 @@ const Layout = props => {
                 <footer style={{
                     textAlign:'center',
                     bottom:'0'
-                        }}>&copy; Created by Aram Alhaddad All right Recived </footer>
+                        }}>&copy; Created by Aram Alhaddad. All rights reserved.</footer>
             </div>
 }
 

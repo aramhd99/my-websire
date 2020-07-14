@@ -13,7 +13,7 @@ const home = props => {
     return <div className={classes.Home}>
                 <MyPic height='200px' />
                 <h1>Welcome to my official website</h1>
-                <h3>My name is <strong>Aram Alhaddad</strong> and, I am a web Devoloper and, a musician</h3>
+                <h3>My name is <strong>Aram Alhaddad</strong>. I am a web developer and a musician.</h3>
                 <Button clicked={ButtonClickedHandler}>Learn More</Button>
             </div>
 }

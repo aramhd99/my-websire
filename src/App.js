@@ -1,6 +1,6 @@
 import React, {Suspense} from 'react';
 import { Route } from 'react-router-dom';
-import {library, Library} from '@fortawesome/fontawesome-svg-core';
+import { library } from '@fortawesome/fontawesome-svg-core';
 import { fab } from '@fortawesome/free-brands-svg-icons';
 import {faEnvelope, faHome, faInfo} from '@fortawesome/free-solid-svg-icons';
 

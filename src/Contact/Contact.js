@@ -34,7 +34,7 @@ const Contact = props => {
                 valid: false,
                 touched: false,
             },
-            Phonenumber: {
+            Phone_Number: {
                 Inputtype: 'input',
                 InputConfig: {
                     type: 'number',
