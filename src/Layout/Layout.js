@@ -14,7 +14,8 @@ const Layout = props => {
         return <div>
                 <Navbar clicked={SideDrawerToggleHandler} />
                 <SideDrawer Toggle={toggleBar}
-                        clicked={SideDrawerToggleHandler} />
+                            show={toggleBar}
+                            clicked={SideDrawerToggleHandler} />
                 <main className={classes.Content}>
                      {props.children}
                 </main>

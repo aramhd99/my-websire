@@ -12,7 +12,7 @@ const thankYou = props => {
         return (
             <div className={classes.ThankYou}>
                 <h1>Thank you for contacting me</h1>
-                <h3>I will reach you as soon ass possible</h3>
+                <h3>I will reach back tp you as soon as possible</h3>
                 <Button clicked={ClickedHandler}>Home</Button>
             </div>
         )
