@@ -4,8 +4,7 @@
 
 @media (max-width: 500px) {
     .SideDrawer {
-        width: 100%;
-        max-width: 325px;
+        width: 80%;
         height: 100%;
         top: 0;
         left: 0;

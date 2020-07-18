@@ -38,7 +38,7 @@ const Contact = props => {
                 Inputtype: 'input',
                 InputConfig: {
                     type: 'number',
-                    placeholder: 'Your PhoneNumber*'
+                    placeholder: 'Your Phone Number*'
                 },
                 value: '',
                 validation: {
@@ -109,9 +109,9 @@ const Contact = props => {
         } 
         axios.post('https://my-app-6a24c.firebaseio.com/messages.json', FormData)
         .then(response => {
-            setLoading(true)
-            props.history.push('/thankyou')
-            })
+            setLoading(false)
+            props.history.push('/thankYou')
+        })
         .catch(error =>{
             setLoading(false)
             props.history.push('/error')

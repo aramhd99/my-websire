@@ -1,12 +1,11 @@
 import React from 'react';
-import { Redirect } from 'react-router-dom';
 
 import classes from './ThankYou.module.css';
 import Button from '../UI/Button/Button';
 
 const thankYou = props => {
     const ClickedHandler = () => (
-        <Redirect to='/' />
+        props.history.push('/')
     )
 
         return (

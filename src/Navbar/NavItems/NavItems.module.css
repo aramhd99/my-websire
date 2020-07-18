@@ -2,6 +2,7 @@
     font-size: 20px;
     display: grid;
     margin: auto;
+    border-radius: 2px;
   }
 
 @media (min-width: 500px) {

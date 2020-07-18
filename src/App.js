@@ -8,10 +8,9 @@ import './App.css';
 import Layout from './Layout/Layout';
 import Home from './Home/Home';
 import About from './About/About';
-import Spinner from './UI/Spinner/Spinner';
-const Contact = React.lazy(() => import('./Contact/Contact'));
-const ThankYou = React.lazy(() => import('./ThankYou/ThankYou'));
-const Error = React.lazy(() => import('./Error/Error'));
+import Contact from "./Contact/Contact";
+import ThankYou from './ThankYou/ThankYou';
+import Error from './Error/Error';
 
 library.add(fab, faHome, faEnvelope, faInfo)
 
@@ -20,9 +19,9 @@ function App() {
       <Layout>
         <Route path='/' exact component={Home} />
         <Route path='/about' component={About} />
-        <Route path='/contact' render={() => (<Suspense fallback={<Spinner />}><Contact /></Suspense>)} />
-        <Route path='/thankyou' render={() => (<Suspense fallback={<Spinner/>}><ThankYou /></Suspense>)} />
-        <Route path='/error' render={() => (<Suspense fallback={<Spinner />}><Error /></Suspense>) } />
+        <Route path='/contact' component={Contact} />
+        <Route path='/thankYou' component={ThankYou} />
+        <Route path='/error' component={Error} />
       </Layout>
   );
 }
