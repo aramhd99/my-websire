@@ -1,22 +1,31 @@
 import React from 'react';
-import { Navbar, Nav } from 'react-bootstrap';
+import { Link } from 'react-router-dom';
+
+import classes from './Navbar.module.css';
+import NavItems from './NavItems/NavItems';
+import SideDrawerToggle from './SideDrawer/SideDrawerToggle/SideDrawerToggle';
 
  const navbar = props => {
+
         return (
-            <Navbar collapseOnSelect expand="lg" bg="success" variant="dark">
-            <Navbar.Brand href="#home">Aram Alhaddad</Navbar.Brand>
-            <Navbar.Toggle aria-controls="responsive-navbar-nav" />
-            <Navbar.Collapse id="responsive-navbar-nav">
-                <Nav className="mr-auto">
-                </Nav>
-                <Nav>
-                <Nav.Link href="#deets">More deets</Nav.Link>
-                <Nav.Link eventKey={2} href="#memes">
-                    Dank memes
-                </Nav.Link>
-                </Nav>
-            </Navbar.Collapse>
-            </Navbar>
+            <nav className={classes.Navbar}>
+                <SideDrawerToggle clicked={props.clicked} />
+                <Link 
+                to='/'
+                style={{
+                    color:'black',
+                    textDecoration:'none',
+                    fontSize:'32px',
+                    fontWeight:'bold',
+                    padding:'0 20px',
+                    cursor:'pointer',
+                    display:'block'
+                    }}>
+                    Aram Alhaddad</Link>
+                <div className={classes.DesktopOnly}>
+                    <NavItems />
+                </div>
+            </nav>
         )
 }
 
